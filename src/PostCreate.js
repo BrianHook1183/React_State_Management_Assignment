@@ -16,13 +16,21 @@ function PostCreate() {
   // - one child `<select>` with a `name="type"` attribute
   // - one child `<textarea>` or `<input>` (not both at the same time) with a `name="content"`
 
+  const handleSetType = (event => {
+    console.log(`handleSetType ran`);
+    const selectedValue = event.target.value;
+    setType(selectedValue);
+    console.log(selectedValue);
+
+  });
+
   return (
     <form name="create">
       <fieldset>
         <legend>Create</legend>
         <div>
           <label htmlFor="type">Type: </label>
-          <select id="type" name="type" required={true}>
+          <select id="type" name="type" required={true} onChange={(event) => handleSetType(event)}>
             <option>Text</option>
             <option>Image</option>
           </select>
