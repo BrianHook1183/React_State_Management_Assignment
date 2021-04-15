@@ -1,10 +1,29 @@
 import React from "react";
 
-function Post({ contents }) {
-  console.log('Post rendered');
-  return (
-    <p>{contents}</p>
-  );
+function Post({ postIndex, postType, postContent, deletePost }) {
+
+  if (postType === "Text") {
+    return (
+      <div className="post" key={postIndex} >
+        <p>{postContent}</p>
+        <button name="delete" onClick={() => deletePost(postIndex)}>
+          Delete
+        </button>
+      </div>
+    );
+  }
+  if (postType === "Image") {
+    return (
+      <div className="post" key={postIndex} >
+      <img src={postContent} />
+      <br />
+      <button name="delete" onClick={() => deletePost(postIndex)} >
+        Delete
+      </button>
+    </div>
+    );
+  }
+  return null;
 }
 
 export default Post;
