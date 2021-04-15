@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function PostCreate({ posts, setPosts }) {
+function PostCreate({ handleAddPost }) {
   const [type, setType] = useState("Text");
   const [content, setContent] = useState("");
 
@@ -21,7 +21,7 @@ function PostCreate({ posts, setPosts }) {
     };
 
     //update state
-    setPosts([...posts, newPost]);
+    handleAddPost(newPost);
 
     // rest form
     setContent("");
